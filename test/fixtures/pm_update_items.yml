@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: MyString
+  pm25: 1
+  pm_update_id: 
+
+two:
+  city: MyString
+  pm25: 1
+  pm_update_id: 
