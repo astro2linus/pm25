@@ -9,5 +9,10 @@ module PM25
       latest_update = PmUpdate.last
       latest_update.pm_update_items
     end
+
+    desc "Return latest 10 importing data records"
+    get 'updates' do
+      latest_update = PmUpdate.latest
+    end
   end
 end
