@@ -4,6 +4,10 @@ module PM25
     version 'v1', using: :header, vendor: 'PM25 China'
     format :json
 
+    before do
+      header "Access-Control-Allow-Origin", "*"
+    end
+
     desc "Return the lastest PM2.5 updates"
     get 'pm25' do
       latest_update = PmUpdate.last
