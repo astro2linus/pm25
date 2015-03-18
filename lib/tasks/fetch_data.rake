@@ -9,13 +9,16 @@ task :import_data => :environment do
   update = PmUpdate.create
   res.body.force_encoding("UTF-8").split("\n").each do |record|
     city, pm25 = record.split(" ")
+    english_name, chinese_name = city.split("_")
     PmUpdateItem.create(
     {
       pm_update: update,
       city: city,
       pm25: pm25.to_i
     })
-    
+
+    @city = City.where(chinese_name: chinese_name, english_name: english_name).first_or_create
+    @city.pm_items.create(pm25: pm25.to_i)
   end
  
 end

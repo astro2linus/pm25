@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315093856) do
+ActiveRecord::Schema.define(version: 20150318150705) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "chinese_name"
+    t.string   "english_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "pm_items", force: :cascade do |t|
+    t.integer  "pm25"
+    t.integer  "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pm_items", ["city_id"], name: "index_pm_items_on_city_id"
 
   create_table "pm_records", force: :cascade do |t|
     t.string   "city"
